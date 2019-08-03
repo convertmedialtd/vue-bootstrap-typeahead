@@ -164,7 +164,7 @@ export default {
   data() {
     return {
       isFocused: false,
-      inputValue: ''
+      inputValue: this.value
     }
   },
 
@@ -175,7 +175,11 @@ export default {
     this.$_ro.observe(this.$refs.input)
     this.$_ro.observe(this.$refs.list.$el)
   },
-
+	watch: {
+		'value'(newValue) {
+		  this.inputValue = newValue
+		}
+	  },
   beforeDestroy() {
     this.$_ro.disconnect()
   }
